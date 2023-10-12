@@ -3,7 +3,7 @@
 ## Download cardano-cli
 
 ```
-curl -s https://raw.githubusercontent.com/solidsnakedev/geniusyield-order-bot-scripts/main/download-cardano-cli.sh | bash
+curl -s  https://raw.githubusercontent.com/solidsnakedev/geniusyield-order-bot-scripts/main/download-cardano-cli.sh | bash
 ```
 
 ## make cardano-cli executable
