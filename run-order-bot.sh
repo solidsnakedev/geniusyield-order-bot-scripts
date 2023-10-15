@@ -17,6 +17,7 @@ if [ -z ${COLLATERAL_UTXO_REF} ]; then
     elif [ -n ${MAESTRO_API_KEY} ]; then
         printf "MAESTRO_API_KEY is set, using maestro\n"
         docker run -d \
+            --name geniusyield-order-bot \
             -e BOTC_SKEY="{\"cborHex\": \"$PAYMENT_SIGNING_KEY_CBOR_HEX\", \"type\": \"PaymentSigningKeyShelley_ed25519\", \"description\": \"Payment Signing Key\"}" \
             -e BOTC_CONFIG="{ \"coreProvider\": { \"maestroToken\": \"$MAESTRO_API_KEY\" }, \"networkId\": \"$CARDANO_NETWORK\", \"logging\": [{ \"type\": { \"tag\": \"stderr\" }, \"severity\": \"Info\", \"verbosity\": \"V2\" }],\"utxoCacheEnable\": false }" \
             ghcr.io/geniusyield/smart-order-router:latest
@@ -37,6 +38,7 @@ else
     elif [ -n ${MAESTRO_API_KEY} ]; then
         printf "MAESTRO_API_KEY is set, using maestro\n"
         docker run -d \
+            --name geniusyield-order-bot \
             -e BOTC_SKEY="{\"cborHex\": \"$PAYMENT_SIGNING_KEY_CBOR_HEX\", \"type\": \"PaymentSigningKeyShelley_ed25519\", \"description\": \"Payment Signing Key\"}" \
             -e BOTC_COLLATERAL="$COLLATERAL_UTXO_REF" \
             -e BOTC_CONFIG="{ \"coreProvider\": { \"maestroToken\": \"$MAESTRO_API_KEY\" }, \"networkId\": \"$CARDANO_NETWORK\", \"logging\": [{ \"type\": { \"tag\": \"stderr\" }, \"severity\": \"Info\", \"verbosity\": \"V2\" }],\"utxoCacheEnable\": false }" \
