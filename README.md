@@ -27,23 +27,38 @@ chmod +x cardano-cli
     --out-file bot.preprod.addr
 ```
 
+## Fund wallet bot address
+
+```
+cat bot.preprod.addr
+```
+
 ## Get signing key
+
 ```
 cat bot.skey | jq .cborHex
 ```
 
-# SMART ORDER ROUTER INSTANCE USING BLOCKFROST
-
-## Set env variables
+## Option 1. Create a `.env.local` file using maestro
 
 ```
-export PAYMENT_SIGNING_KEY_CBOR_HEX=5820d682e237a04d43ad011fdecd141acd485f6d3d634466692d58f6d75250f39134
-export BLOCKFROST_API_KEY=some_api_key
-export CARDANO_NETWORK=testnet-preprod
+PAYMENT_SIGNING_KEY_CBOR_HEX=5820d682e237a04d43ad011fdecd141acd485f6d3d634466692d58f6d75250f39134
+MAESTRO_API_KEY=some_api_key
+CARDANO_NETWORK=testnet-preprod
 ```
-## Set optional collateral env
+
+## Option 2. Create a `.env.local` file using blockfrost
+
 ```
-export COLLATERAL_UTXO_REF=7cc7b044d26981d3fc73ae72994f289d99ba113ceefb5b83f4d7643bfb12682a#1
+PAYMENT_SIGNING_KEY_CBOR_HEX=5820d682e237a04d43ad011fdecd141acd485f6d3d634466692d58f6d75250f39134
+BLOCKFROST_API_KEY=some_api_key
+CARDANO_NETWORK=testnet-preprod
+```
+
+## Set optional collateral
+
+```
+COLLATERAL_UTXO_REF=7cc7b044d26981d3fc73ae72994f289d99ba113ceefb5b83f4d7643bfb12682a#1
 ```
 
 ## Run order bot
