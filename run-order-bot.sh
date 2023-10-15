@@ -1,6 +1,7 @@
 #!/bin/bash
 source .env.local
 printf "Loading .env.local\n\n"
+cat .env.local
 
 printf "PAYMENT_SIGNING_KEY_CBOR_HEX=${PAYMENT_SIGNING_KEY_CBOR_HEX:?"missing variable"}\n"
 printf "CARDANO_NETWORK=${CARDANO_NETWORK:?"missing variable"}\n"
