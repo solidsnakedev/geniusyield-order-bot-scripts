@@ -9,6 +9,7 @@ printf "Running geniusyield order bot: \n"
 if [ -z ${COLLATERAL_UTXO_REF} ]; then
     if [ -n ${BLOCKFROST_API_KEY} ]; then
         printf "BLOCKFROST_API_KEY is set, using blockfrost\n"
+        printf "${BLOCKFROST_API_KEY}"
         docker run -d \
             --name geniusyield-order-bot \
             -e BOTC_SKEY="{\"cborHex\": \"$PAYMENT_SIGNING_KEY_CBOR_HEX\", \"type\": \"PaymentSigningKeyShelley_ed25519\", \"description\": \"Payment Signing Key\"}" \
